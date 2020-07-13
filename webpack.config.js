@@ -15,6 +15,15 @@ module.exports = {
                 use: ["style-loader", "css-loader"]
             },
             {
+                test: /\.(jpe?g|png)$/,
+                use: {
+                  loader: "url-loader",
+                  options: {
+                    limit: 10000,
+                  },
+                },
+            },
+            {
                 test: /\.(svg|png|jpe?g|gif)$/i,
                 use: [
                   {
