@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: "./src/index.js", 
@@ -15,35 +16,33 @@ module.exports = {
                 use: ["style-loader", "css-loader", "sass-loader"]
             },
             {
-                test: /\.(jpe?g|png)$/,
+                test: /\.(svg|png|jpe?g|gif)$/,
                 use: {
                   loader: "url-loader",
                   options: {
                     limit: 10000,
+                    name: 'images/[name].[ext]'
                   },
                 },
             },
-            {
-                test: /\.(svg|png|jpe?g|gif)$/i,
-                use: [
-                  {
-                    loader: 'file-loader',
-                    options:{
-                        name: '[path][name].[ext]'
-                    }
-                  },
-                ],
-              },
         ]
     },
     resolve: {extensions: ["*", ".js", ".jsx"]},
     output:{
-        filename: "bundle.js"
+        filename: "bundle.js",
+        chunkFilename: '[id].js',
+        path: path.resolve(__dirname, 'dist'),
     },
     devServer: {
-        contentBase: path.join(__dirname, "public"),
         historyApiFallback: true, 
         port:3000,
-        publicPath:'http://localhost:3000/dist/'
-    }
+    },
+
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: __dirname + '/src/index.html',
+            filename: 'index.html',
+            inject: 'body'
+        })
+    ]
 };
