@@ -4,9 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watch",
     "start": "webpack-dev-server --mode development --hot --open",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "fix:styles": "stylelint \"*/**/*.{scss,css}\" --fix",
+    "lint": "tsc --noEmit && eslint \"*/**/*.{js,ts,tsx}\" --fix && npm run fix:styles"
+  },
+  "jest":{
+    "transform":{
+      "\\.(ts|tsx)$":"ts-jest"
+    },
+    "globals":{
+      "ts-jest":{
+        "tsConfig": "tsconfig.jest.json"
+      }
+    },
+    "moduleFileExtensions":["ts", "tsx", "js"]
   },
   "author": "Caden Cunningham",
   "license": "ISC",
@@ -16,19 +29,46 @@
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-react": "^7.10.1",
+    "@testing-library/react": "^10.4.7",
+    "@types/jest": "^26.0.8",
+    "@types/node": "^14.0.27",
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/testing-library__react": "^10.2.0",
+    "@typescript-eslint/eslint-plugin": "^3.7.1",
+    "@typescript-eslint/parser": "^3.7.1",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.6.0",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.5",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
+    "jest": "^26.2.2",
+    "prettier": "^2.0.5",
     "react-hot-loader": "^4.12.21",
+    "sass-loader": "^9.0.1",
+    "source-map-loader": "^1.0.1",
     "style-loader": "^1.2.1",
+    "stylelint": "^13.6.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-prettier": "^1.1.2",
+    "ts-jest": "^26.1.4",
+    "typescript": "^3.9.7",
     "url-loader": "^4.1.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "dart-sass": "^1.25.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "sass": "^1.26.9",
+    "react-router-dom": "^5.2.0"
   }
 }
