@@ -10,16 +10,20 @@
     "fix:styles": "stylelint \"*/**/*.{scss,css}\" --fix",
     "lint": "tsc --noEmit && eslint \"*/**/*.{js,ts,tsx}\" --fix && npm run fix:styles"
   },
-  "jest":{
-    "transform":{
-      "\\.(ts|tsx)$":"ts-jest"
+  "jest": {
+    "transform": {
+      "\\.(ts|tsx)$": "ts-jest"
     },
-    "globals":{
-      "ts-jest":{
+    "globals": {
+      "ts-jest": {
         "tsConfig": "tsconfig.jest.json"
       }
     },
-    "moduleFileExtensions":["ts", "tsx", "js"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   },
   "author": "Caden Cunningham",
   "license": "ISC",
